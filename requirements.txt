@@ -1,0 +1,5 @@
+Django>=3.2
+djangorestframework>=3.12
+djangorestframework-simplejwt>=4.8
+requests
+python-dotenv

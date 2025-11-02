@@ -1,0 +1,29 @@
+# --- REST framework & apps
+INSTALLED_APPS += [
+    'rest_framework',
+    'rest_framework_simplejwt',
+    'auth',  # agar app nomi boshqacha bo'lsa moslashtiring
+    'leads',
+    'dashboard',
+    'payout',
+    'telegram_integration',
+]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+}
+
+# Environment-based settings
+from pathlib import Path
+import os
+from dotenv import load_dotenv
+load_dotenv()
+SECRET_KEY = os.getenv('SECRET_KEY', SECRET_KEY)
+FB_VERIFY_TOKEN = os.getenv('FB_VERIFY_TOKEN')
+TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
+TELEGRAM_CHAT_ID = os.getenv('TELEGRAM_CHAT_ID')
